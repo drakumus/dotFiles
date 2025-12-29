@@ -1,0 +1,94 @@
+* {
+    border: none;
+    font-family: "JetBrains Mono", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.8); /* Transparent Dark Gray */
+    border-bottom: 2px solid rgba(100, 114, 125, 0.5);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+    margin: 10px 0 0 10px;
+}
+
+#workspaces button {
+    color: #f1e5ac;
+    font-weight: bold;
+    background-color: transparent;
+    /* border-bottom: 3px solid transparent; */
+    margin: 10px;
+    padding: 0 2px;
+    /* Horizontal offset | Vertical offset | Blur radius | Color */
+    text-shadow: 0 0 3px rgba(241, 229, 172, 0.8), 
+                 0 0 6px rgba(241, 229, 172, 0.4);
+    /* Set the background gradient using the gold colors we found */
+    /* background: linear-gradient(to bottom, #F1E5AC, #D4AF37, #A48D47); */
+}
+
+#workspaces button.active {
+    /* border-bottom: 3px solid #ffffff; */
+    margin: 0px;
+    border-width: 10px;
+    border-style: solid;
+    border-image: url("images/tab_selected.png");
+    border-image-slice: 10;
+    border-image-repeat: round;
+    background-color: #303030;
+}
+
+#workspaces button.urgent {
+    color: #ff0000;
+    animation: smooth-blink 2s infinite;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #custom-gpu-state {
+    padding: 0 10px;
+    margin: 0 4px;
+    color: #ffffff;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Green when suspended (Saving battery) */
+#custom-gpu-state.suspended {
+    color: #a6e3a1;
+}
+
+/* Red when active (Using Nvidia) */
+#custom-gpu-state.active {
+    font-family: "JetBrainsMono Nerd Font";
+    color: #f38ba8;
+}
+
+#custom-workspace-name {
+    color: #f1e5ac;
+    font-weight: bold;
+    padding: 0 10px;
+    text-shadow: 0 0 4px rgba(241, 229, 172, 0.8),
+                 0 0 8px rgba(241, 229, 172, 0.4);
+    padding: 0 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+@keyframes smooth-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+

@@ -1,0 +1,66 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 4,
+    "modules-left": ["tray", "custom/workspace-name", "hyprland/submap"], 
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "custom/gpu-status", "battery", "clock"],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "◆",
+            "default": "◇",
+            "urgent": "◆"
+        }
+    },
+    "tray": {
+        "spacing": 10,
+    	  "show-passive-items": true
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "{essid} ",
+        "format-ethernet": "Connected ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "kitty -e nmtui"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "on-click": "swaync-client -t -sw",
+        "format-icons": {
+            "default": ["", "", ""]
+        }
+    },
+    "custom/gpu-status": {
+        "exec": "~/.config/waybar/gpu_status.sh",
+        "return-type": "json",
+        "interval": 2,
+        "format": "{}"
+    },
+    "custom/workspace-name": {
+        "exec": "~/.config/waybar/workspace_name.sh",
+        "format": "{}",
+	"tooltip": false
+    }
+}
+
